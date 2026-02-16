@@ -1,0 +1,378 @@
+/* Wrapper utama dengan background gradien agar tampilan lebih hidup. */
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 14% 12%, #d4efff 0%, rgba(212, 239, 255, 0) 45%),
+    radial-gradient(circle at 86% 15%, #b6ffd9 0%, rgba(182, 255, 217, 0) 42%),
+    linear-gradient(170deg, #e8f5ff 0%, #f7fbff 48%, #f2fffb 100%);
+}
+
+/* Dekorasi blur untuk memberikan kedalaman visual pada halaman. */
+.blobOne,
+.blobTwo {
+  position: absolute;
+  width: 26rem;
+  height: 26rem;
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: 0;
+  opacity: 0.45;
+}
+
+.blobOne {
+  top: -8rem;
+  left: -7rem;
+  background: #80d5ff;
+}
+
+.blobTwo {
+  right: -8rem;
+  bottom: -10rem;
+  background: #7df0c2;
+}
+
+/* Container utama yang memegang seluruh konten aplikasi. */
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, 92vw);
+  margin: 0 auto;
+  padding: 56px 0 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  animation: enterUp 0.72s ease both;
+}
+
+/* Bagian header untuk identitas aplikasi dan status data terbaru. */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.badge {
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(76, 122, 169, 0.2);
+  color: #2d5578;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+  color: #0f2b4a;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #3c5d80;
+}
+
+.refreshInfo {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #4a6a8e;
+}
+
+/* Form pencarian kota dengan desain glassmorphism ringan. */
+.searchForm {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 18px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 12px 35px rgba(43, 89, 127, 0.09);
+}
+
+.searchInput {
+  flex: 1;
+  border: 0;
+  outline: none;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  background: var(--surface-muted);
+  font-size: 0.98rem;
+  color: #163656;
+}
+
+.searchInput::placeholder {
+  color: #6f88a4;
+}
+
+.searchButton {
+  border: 0;
+  border-radius: 12px;
+  padding: 0.9rem 1.25rem;
+  background: linear-gradient(130deg, #1888d9, #16b7b5);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.searchButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.searchButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Pesan error yang tampil saat request gagal. */
+.errorText {
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 93, 93, 0.12);
+  border: 1px solid rgba(202, 53, 53, 0.25);
+  color: #952727;
+  font-size: 0.92rem;
+}
+
+/* Grid dashboard yang membagi kartu cuaca saat ini dan forecast. */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 18px;
+}
+
+.card {
+  background: var(--surface-strong);
+  border: 1px solid var(--border-color);
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 12px 32px rgba(48, 92, 128, 0.1);
+  animation: enterUp 0.7s ease both;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.cardLabel {
+  color: #48739b;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cityName {
+  margin-top: 6px;
+  color: #0f2b4a;
+  font-size: 1.5rem;
+}
+
+/* Layout detail cuaca terkini yang menonjolkan suhu dan metrik penting. */
+.currentWeather {
+  margin-top: 14px;
+}
+
+.temperatureArea {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.temperature {
+  font-size: clamp(2.8rem, 8vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1;
+  color: #143759;
+}
+
+.description {
+  margin-top: 8px;
+  color: #446486;
+}
+
+.metricsGrid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.metricItem {
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(76, 122, 169, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metricItem span {
+  font-size: 0.84rem;
+  color: #4c6e93;
+}
+
+.metricItem strong {
+  font-size: 1rem;
+  color: #12324f;
+}
+
+/* Bagian header forecast yang menampilkan info auto-refresh. */
+.forecastHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.autoRefreshLabel {
+  color: #48739b;
+  font-size: 0.82rem;
+}
+
+/* List prakiraan harian 5 hari dengan item ringkas. */
+.forecastList {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.forecastItem {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(76, 122, 169, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+  animation: fadeIn 0.45s ease both;
+}
+
+.forecastItem:nth-child(1) {
+  animation-delay: 0.04s;
+}
+
+.forecastItem:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.forecastItem:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.forecastItem:nth-child(4) {
+  animation-delay: 0.16s;
+}
+
+.forecastItem:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.forecastDay {
+  font-weight: 600;
+  color: #2d4663;
+}
+
+.forecastInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #405f82;
+  font-size: 0.93rem;
+}
+
+.forecastInfo img {
+  width: 40px;
+  height: 40px;
+}
+
+.forecastTemp {
+  color: #0f2b4a;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Placeholder saat data belum tersedia. */
+.emptyState {
+  margin-top: 12px;
+  color: #4a6a8e;
+}
+
+/* Responsif untuk tablet dan mobile agar layout tetap nyaman dibaca. */
+@media (max-width: 980px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    padding: 42px 0 50px;
+  }
+
+  .searchForm {
+    flex-direction: column;
+  }
+
+  .searchButton {
+    width: 100%;
+  }
+
+  .metricsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .forecastItem {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .forecastTemp {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 460px) {
+  .temperatureArea {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animasi ringan agar halaman terasa dinamis saat pertama dibuka. */
+@keyframes enterUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,40 @@
+/* Variabel global untuk warna dan tipografi agar konsisten di seluruh aplikasi. */
+:root {
+  --font-base: var(--font-sora), "Segoe UI", sans-serif;
+  --font-mono: var(--font-fira-code), "Courier New", monospace;
+  --text-primary: #0f2b4a;
+  --text-soft: #4a6a8e;
+  --surface-strong: rgba(255, 255, 255, 0.88);
+  --surface-muted: rgba(255, 255, 255, 0.64);
+  --border-color: rgba(76, 122, 169, 0.2);
+}
+
+/* Reset ringan agar layout konsisten antar browser. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Atur dimensi dasar halaman agar tidak overflow horizontal. */
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Gaya dasar body untuk font, warna teks, dan rendering yang halus. */
+body {
+  min-height: 100vh;
+  color: var(--text-primary);
+  background: #ecf7ff;
+  font-family: var(--font-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hilangkan style default tautan agar mengikuti desain komponen. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
